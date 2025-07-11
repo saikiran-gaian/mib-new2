@@ -286,15 +286,15 @@ const HealthTile: React.FC<{ label: string; value: number | string; icon: React.
   };
 
   return (
-    <div className={`p-4 rounded-xl border-2 ${variantStyles[variant]} transition-all duration-200 hover:shadow-lg hover:scale-105`}>
-      <div className="flex items-center space-x-3">
-        <div className="p-2 rounded-lg bg-white/80 flex-shrink-0 shadow-sm">
+    <div className={`p-3 rounded-xl border-2 ${variantStyles[variant]} transition-all duration-200 hover:shadow-lg hover:scale-105 h-full flex flex-col`}>
+      <div className="flex items-center justify-center mb-2">
+        <div className="p-2 rounded-lg bg-white/80 shadow-sm">
           {icon}
         </div>
-        <div className="flex-1">
-          <div className="text-xs font-bold uppercase tracking-wide opacity-80">{label}</div>
-          <div className="text-xl font-bold">{value}</div>
-        </div>
+      </div>
+      <div className="text-center flex-1 flex flex-col justify-center">
+        <div className="text-xs font-bold uppercase tracking-wide opacity-80 mb-1">{label}</div>
+        <div className="text-lg font-bold">{value}</div>
       </div>
     </div>
   );
@@ -327,10 +327,10 @@ const BoardRow: React.FC<{ board: Board }> = ({ board }) => {
   };
 
   return (
-    <div className="mb-6">
-      <div className="flex flex-col xl:flex-row gap-6">
+    <div className="mb-6 w-full">
+      <div className="flex flex-col xl:flex-row gap-6 h-full">
         {/* Board Info Card */}
-        <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-300 group w-full xl:w-80 xl:flex-shrink-0">
+        <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-300 group w-full xl:w-80 xl:flex-shrink-0 h-full xl:h-auto">
           <div className="flex items-start space-x-3">
             <div className={`w-4 h-4 rounded-full ${getStatusColor(board.health.status)} shadow-sm mt-1 flex-shrink-0`}></div>
             <div className="flex-1 min-w-0">
@@ -363,20 +363,20 @@ const BoardRow: React.FC<{ board: Board }> = ({ board }) => {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 flex-1">
+        <div className="flex flex-col lg:flex-row gap-6 flex-1 h-full">
           {/* Weekly Metrics Card */}
-          <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-300 flex-1">
+          <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-300 flex-1 h-full lg:h-auto">
             <h4 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wide text-center">Weekly Metrics</h4>
-            <div className="space-y-3">
+            <div className="space-y-3 h-full flex flex-col justify-center">
               {/* W1 */}
               <div className="bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-xl p-4 border border-indigo-200">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-1 sm:space-y-0">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-3 space-y-1 lg:space-y-0">
                     <div className="text-sm font-bold text-indigo-800 uppercase tracking-wide">W1</div>
                     <div className="text-xs text-indigo-600">(Jul 14th - Jul 18th)</div>
                     <div className="text-sm font-bold text-indigo-700">Dev: {board.health.w1.devCount}</div>
                   </div>
-                  <div className="flex items-center justify-between sm:justify-end sm:space-x-4 gap-2">
+                  <div className="flex items-center justify-between lg:justify-end lg:space-x-4 gap-2">
                     <div className="text-center">
                       <div className="text-sm font-bold text-indigo-800">{board.health.w1.bl}</div>
                       <div className="text-xs text-indigo-600 uppercase">BL</div>
@@ -403,13 +403,13 @@ const BoardRow: React.FC<{ board: Board }> = ({ board }) => {
 
               {/* W2 */}
               <div className="bg-gradient-to-r from-cyan-50 to-cyan-100 rounded-xl p-4 border border-cyan-200">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-1 sm:space-y-0">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-3 space-y-1 lg:space-y-0">
                     <div className="text-sm font-bold text-cyan-800 uppercase tracking-wide">W2</div>
                     <div className="text-xs text-cyan-600">(Jul 21st - Jul 25th)</div>
                     <div className="text-sm font-bold text-cyan-700">Dev: {board.health.w2.devCount}</div>
                   </div>
-                  <div className="flex items-center justify-between sm:justify-end sm:space-x-4 gap-2">
+                  <div className="flex items-center justify-between lg:justify-end lg:space-x-4 gap-2">
                     <div className="text-center">
                       <div className="text-sm font-bold text-cyan-800">{board.health.w2.bl}</div>
                       <div className="text-xs text-cyan-600 uppercase">BL</div>
@@ -436,13 +436,13 @@ const BoardRow: React.FC<{ board: Board }> = ({ board }) => {
 
               {/* W3 */}
               <div className="bg-gradient-to-r from-teal-50 to-teal-100 rounded-xl p-4 border border-teal-200">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-1 sm:space-y-0">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-3 space-y-1 lg:space-y-0">
                     <div className="text-sm font-bold text-teal-800 uppercase tracking-wide">W3</div>
                     <div className="text-xs text-teal-600">(Jul 28th - Aug 1st)</div>
                     <div className="text-sm font-bold text-teal-700">Dev: {board.health.w3.devCount}</div>
                   </div>
-                  <div className="flex items-center justify-between sm:justify-end sm:space-x-4 gap-2">
+                  <div className="flex items-center justify-between lg:justify-end lg:space-x-4 gap-2">
                     <div className="text-center">
                       <div className="text-sm font-bold text-teal-800">{board.health.w3.bl}</div>
                       <div className="text-xs text-teal-600 uppercase">BL</div>
@@ -469,13 +469,13 @@ const BoardRow: React.FC<{ board: Board }> = ({ board }) => {
 
               {/* W4 */}
               <div className="bg-gradient-to-r from-rose-50 to-rose-100 rounded-xl p-4 border border-rose-200">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-1 sm:space-y-0">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-3 space-y-1 lg:space-y-0">
                     <div className="text-sm font-bold text-rose-800 uppercase tracking-wide">W4</div>
                     <div className="text-xs text-rose-600">(Aug 4th - Aug 8th)</div>
                     <div className="text-sm font-bold text-rose-700">Dev: {board.health.w4.devCount}</div>
                   </div>
-                  <div className="flex items-center justify-between sm:justify-end sm:space-x-4 gap-2">
+                  <div className="flex items-center justify-between lg:justify-end lg:space-x-4 gap-2">
                     <div className="text-center">
                       <div className="text-sm font-bold text-rose-800">{board.health.w4.bl}</div>
                       <div className="text-xs text-rose-600 uppercase">BL</div>
@@ -503,9 +503,9 @@ const BoardRow: React.FC<{ board: Board }> = ({ board }) => {
           </div>
 
           {/* Health Metrics Card */}
-          <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-300 w-full lg:w-96 lg:flex-shrink-0">
+          <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-300 w-full lg:w-96 lg:flex-shrink-0 h-full lg:h-auto">
             <h4 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wide text-center">Health Metrics</h4>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 gap-3 h-full content-start">
               <HealthTile
                 label="Velocity"
                 value={`${board.health.velocity}%`}
